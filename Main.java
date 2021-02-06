@@ -10,26 +10,24 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.util.ArrayList; 
 import java.util.Scanner;
 
+
+
 public class Main {
-	public static void main(String[] args) {
-		//	System.out.print("Program 1");
-		int counter = 0;
-		// Has all numbers that appear on excel cells
-		ArrayList<Double> EXCELCELLS = new ArrayList<Double>();
-		// has all quantities in sheet
-		ArrayList<Double> Quantity = new ArrayList<Double>();
-		// has all unit prices in sheet
-		ArrayList<Double> UnitPriceinRiyals = new ArrayList<Double>();
-		// will have updated total price 
-		ArrayList<Double> TotalPriceEach = new ArrayList<Double>();
+	
+	// Has all numbers that appear on excel cells
+			static ArrayList<Double> EXCELCELLS = new ArrayList<Double>();
+			// has all quantities in sheet
+			static ArrayList<Double> Quantity = new ArrayList<Double>();
+			// has all unit prices in sheet
+			static ArrayList<Double> UnitPriceinRiyals = new ArrayList<Double>();
+			// will have updated total price 
+			static ArrayList<Double> TotalPriceEach = new ArrayList<Double>();
+	
+	static void riyalsFunction() {
+	    System.out.println("Unit price in Riyals");
+		
 		double totalPriceForAllItems = 0;
 		
-		 Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-		    System.out.println("Enter Exchange rate, 0 if already in Saudi Riyals");
-
-		    String rate = myObj.nextLine();  // Read user input
-		    System.out.println("Exchange rate is: " + rate);  // Output user input
-		    
 		try {
 			File file = new File("./src/snc/com/sample.xlsx");
 			FileInputStream fis = new FileInputStream(file);   //obtaining bytes from the file  
@@ -92,6 +90,22 @@ public class Main {
 //		System.out.println(TotalPriceEach.get(1));
 //		System.out.println(TotalPriceEach.get(16));
 		System.out.println(totalPriceForAllItems);
-		
+	  }
+	
+	public static void main(String[] args) {
+			System.out.print("Program 1 started\n");
+		 Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+		    System.out.println("Enter Exchange rate, 0 if already in Saudi Riyals");
+
+		    String rate = myObj.nextLine();  // Read user input
+		    System.out.println("Exchange rate is: " + rate);  // Output user input
+		    int cRate = Integer.parseInt(rate);
+		    if(cRate == 0) {
+		    	// means that its in saudi riyals
+		    	riyalsFunction();
+		    } else {
+		    	// means it is not in Saudi riyals
+		    }		
 	}
+	
 }
