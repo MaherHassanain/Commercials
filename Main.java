@@ -8,6 +8,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;  
 import org.apache.poi.xssf.usermodel.XSSFWorkbook; 
 import java.util.ArrayList; 
+import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
@@ -22,6 +23,13 @@ public class Main {
 		// will have updated total price 
 		ArrayList<Double> TotalPriceEach = new ArrayList<Double>();
 		double totalPriceForAllItems = 0;
+		
+		 Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+		    System.out.println("Enter Exchange rate, 0 if already in Saudi Riyals");
+
+		    String rate = myObj.nextLine();  // Read user input
+		    System.out.println("Exchange rate is: " + rate);  // Output user input
+		    
 		try {
 			File file = new File("./src/snc/com/sample.xlsx");
 			FileInputStream fis = new FileInputStream(file);   //obtaining bytes from the file  
