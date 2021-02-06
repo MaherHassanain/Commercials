@@ -10,8 +10,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.util.ArrayList; 
 import java.util.Scanner;
 
-
-
 public class Main {
 	
 	// Has all numbers that appear on excel cells
@@ -22,12 +20,12 @@ public class Main {
 			static ArrayList<Double> UnitPriceinRiyals = new ArrayList<Double>();
 			// will have updated total price 
 			static ArrayList<Double> TotalPriceEach = new ArrayList<Double>();
+			static double totalPriceForAllItems = 0;
+
 	
 	static void riyalsFunction() {
 	    System.out.println("Unit price in Riyals");
-		
-		double totalPriceForAllItems = 0;
-		
+				
 		try {
 			File file = new File("./src/snc/com/sample.xlsx");
 			FileInputStream fis = new FileInputStream(file);   //obtaining bytes from the file  
@@ -92,7 +90,12 @@ public class Main {
 		System.out.println(totalPriceForAllItems);
 	  }
 	
+	static void nonRiyalsFunction() {
+		// put code here
+	}
+	
 	public static void main(String[] args) {
+		
 			System.out.print("Program 1 started\n");
 		 Scanner myObj = new Scanner(System.in);  // Create a Scanner object
 		    System.out.println("Enter Exchange rate, 0 if already in Saudi Riyals");
@@ -103,9 +106,10 @@ public class Main {
 		    if(cRate == 0) {
 		    	// means that its in saudi riyals
 		    	riyalsFunction();
+		    	
 		    } else {
 		    	// means it is not in Saudi riyals
+		    	nonRiyalsFunction();
 		    }		
 	}
-	
 }
