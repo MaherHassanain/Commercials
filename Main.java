@@ -102,7 +102,7 @@ public class Main {
 
 		    String rate = myObj.nextLine();  // Read user input
 		    System.out.println("Exchange rate is: " + rate);  // Output user input
-		    int cRate = Integer.parseInt(rate);
+		    double cRate = Double.parseDouble(rate);
 		    if(cRate == 0) {
 		    	// means that its in saudi riyals
 		    	riyalsFunction();
