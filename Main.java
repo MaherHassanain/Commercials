@@ -1,14 +1,16 @@
 package snc.com;
 
-import java.io.File;  
-import java.io.FileInputStream;  
-import java.util.Iterator;  
+import java.util.Iterator;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;  
-import org.apache.poi.ss.usermodel.Row;  
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;  
 import org.apache.poi.xssf.usermodel.XSSFWorkbook; 
 import java.util.ArrayList; 
 import java.util.Scanner;
+import java.io.*;
 
 public class Main {
 	
@@ -22,7 +24,29 @@ public class Main {
 			static ArrayList<Double> TotalPriceEach = new ArrayList<Double>();
 			static double totalPriceForAllItems = 0;
 
-	
+	static void createExcel() {
+		
+		// Creating Workbook instances 
+        Workbook wb = new HSSFWorkbook(); 
+  
+        // An output stream accepts output bytes and sends them to sink. 
+        try {
+			OutputStream fileOut = new FileOutputStream(".\\src\\snc\\com\\Geeks.xlsx");
+			
+			System.out.println("Sheets Has been Created successfully"); 
+			  
+	        try {
+				wb.write(fileOut);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+	}
 	static void riyalsFunction() {
 	    System.out.println("Unit price in Riyals");
 				
@@ -176,5 +200,7 @@ public class Main {
 		    	// means it is not in Saudi riyals
 		    	nonRiyalsFunction(cRate);
 		    }		
+		    
+		    createExcel();
 	}
 }
